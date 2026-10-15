@@ -6,8 +6,17 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .venv/
+.takemeter-venv/
 venv/
 env/
+
+# Local setup diagnostics
+*-fix.out.log
+*-fix.err.log
+readiness-test.out.log
+readiness-test.err.log
+setup-install.out.log
+setup-install.err.log
 
 # Jupyter
 .ipynb_checkpoints/
