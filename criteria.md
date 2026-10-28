@@ -53,60 +53,59 @@ whether you hit them:
 
 ## 1.
 
-<!-- Your criterion. It must name a number. -->
+Held-out test accuracy is at least **0.70**.
 
-
-
-**Why this target:**
-
+**Why this target:** The dataset has four equally sized topic classes, so a
+random guesser would be correct about 25% of the time. A 70% target is well
+above chance while still allowing for short articles that combine business,
+technology, science, and public-affairs vocabulary.
 
 
 ---
 
 ## 2.
 
-<!-- Your criterion. -->
+Macro F1 on the held-out test split is at least **0.68**.
 
-
-
-**Why this target:**
-
+**Why this target:** Macro F1 gives each of the four AG News topics equal
+weight. This matters because the 50-per-class sample is intentionally balanced,
+so a strong overall score should not hide weak performance on one topic.
 
 
 ---
 
 ## 3.
 
-<!-- Your criterion. -->
+Every label has an F1 score of at least **0.60** on the held-out test split.
 
-
-
-**Why this target:**
-
+**Why this target:** The stratified 70/15/15 split puts only about eight
+examples from each 50-example label into the test set, so an individual F1 can
+move substantially between seeds. A 0.60 floor is demanding enough to catch a
+failed class without treating normal small-test-set variation as failure.
 
 
 ---
 
 ## 4.
 
-<!-- Your criterion. -->
+No label accounts for more than **30%** of `labels.csv`.
 
-
-
-**Why this target:**
-
+**Why this target:** The sample intentionally contains 50 examples in each of
+the four source classes, or 25% per label. A 30% cap preserves that balance and
+prevents a model from appearing accurate mainly by predicting a majority topic.
 
 
 ---
 
 ## 5.
 
-<!-- Your criterion. -->
+In a 20-article source-label audit, **100%** of the stored labels match the
+instructor-approved AG News source labels.
 
-
-
-**Why this target:**
-
+**Why this target:** These labels come from an approved pre-labeled benchmark,
+not from a new manual taxonomy. The audit verifies that the four source labels
+were transferred and mapped to `world`, `sports`, `business`, and `sci_tech`
+without transcription or mapping errors.
 
 
 ---

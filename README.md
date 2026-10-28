@@ -42,6 +42,10 @@
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
 
+This classifier sorts short news articles from the instructor-approved AG News
+dataset into four source topics: `world`, `sports`, `business`, and `sci_tech`.
+It uses a balanced sample of 200 articles, with 50 articles in each class.
+The dataset's original labels are retained and disclosed in every `note` cell.
 
 
 ---
@@ -54,33 +58,66 @@
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+### `world`
 
-**Definition:**
-
-**Example 1:**
->
-
-**Example 2:**
->
-
-### `label_two`
-
-**Definition:**
+**Definition:** News primarily about international events, government,
+politics, conflict, crime, or public affairs.
 
 **Example 1:**
->
+> Mexico Lawmakers Protest Education Funding (AP) ... Mexico City legislators
+> ... seized the speaker's podium Tuesday to prevent discussion of proposed
+> funding changes for local education.
 
 **Example 2:**
->
+> Three appear in Victoria court on drug charges linked to legislature raid
+> (Canadian Press) ...
+
+### `sports`
+
+**Definition:** News primarily about sports teams, athletes, competitions, or
+sporting events.
+
+**Example 1:**
+> Beasley calls out his 49ers for effort ... despite their youth, injuries and
+> lousy 1-6 record ...
+
+**Example 2:**
+> I'm fully prepared for the Nagpur test: Tendulkar ...
+
+### `business`
+
+**Definition:** News primarily about companies, markets, financial results,
+commerce, or economic activity.
+
+**Example 1:**
+> FedEx Profit, Outlook Up, Stock Down ... quarterly profit nearly quadrupled
+> ... but the stock slipped ...
+
+**Example 2:**
+> At least five rigs adrift in the Gulf ... Three others were damaged by
+> Hurricane Ivan.
+
+### `sci_tech`
+
+**Definition:** News primarily about science, research, computing,
+telecommunications, or technology products and services.
+
+**Example 1:**
+> Sport fishermen depleting some saltwater species ... researchers report ...
+> nearly a quarter of the catch from overfished species.
+
+**Example 2:**
+> Nokia Launches Wireless Content Solution ... Nokia ... launched Monday ...
+> a major worldwide initiative.
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** `business` and `sci_tech`
 
-**The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
+**The decision rule I used every time:** If an article is mainly about a
+company's financial result, market activity, or commercial decision, label it
+`business`. If it is mainly about a scientific finding, technology product, or
+technical development, label it `sci_tech`, even when a company is mentioned.
 
 
 
@@ -93,17 +130,27 @@
 
 **Where the posts came from:**
 
+The instructor-approved [AG News dataset](https://huggingface.co/datasets/xwjzds/ag_news),
+using its training split. A reproducible random sample selected 50 articles
+from each original class.
+
 **How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
 Say so plainly — the disclosure is required, not penalised. -->
+
+The source dataset supplied the original topic labels. I mapped `World`,
+`Sports`, `Business`, and `Sci/Tech` to `world`, `sports`, `business`, and
+`sci_tech`. This pre-labeled-source workflow was approved by the instructor.
+Every `note` cell in `labels.csv` identifies the source label.
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| `world` | 50 | 25% |
+| `sports` | 50 | 25% |
+| `business` | 50 | 25% |
+| `sci_tech` | 50 | 25% |
+| **Total** | **200** | **100%** |
 
 **Three hard cases**
 
@@ -111,25 +158,32 @@ Say so plainly — the disclosure is required, not penalised. -->
      been, and what you chose. These are worth more than the easy 190. -->
 
 **1.**
-> *The post:*
+> *The post:* Nokia Launches Wireless Content Solution ... Nokia described its
+> new Preminet solution as a major worldwide initiative.
 >
-> *Could have been:*
+> *Could have been:* `business` or `sci_tech`
 >
-> *I chose, because:*
+> *I chose:* `sci_tech`, because the focus is the wireless-content technology
+> product, not a financial result or commercial transaction.
 
 **2.**
-> *The post:*
+> *The post:* At least five rigs adrift in the Gulf ... three others were
+> damaged by Hurricane Ivan.
 >
-> *Could have been:*
+> *Could have been:* `world` or `business`
 >
-> *I chose, because:*
+> *I chose:* `business`, because the article is centered on offshore oil-rig
+> operations and the named energy company rather than the broader storm event.
 
 **3.**
-> *The post:*
+> *The post:* Sport fishermen depleting some saltwater species ... researchers
+> report that recreational fishing accounts for nearly a quarter of the catch
+> from overfished species.
 >
-> *Could have been:*
+> *Could have been:* `sports` or `sci_tech`
 >
-> *I chose, because:*
+> *I chose:* `sci_tech`, because it reports a research finding about fish stocks
+> rather than a sports competition or athlete.
 
 ---
 
