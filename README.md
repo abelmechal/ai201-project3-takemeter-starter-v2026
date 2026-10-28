@@ -47,6 +47,8 @@ dataset into four source topics: `world`, `sports`, `business`, and `sci_tech`.
 It uses a balanced sample of 200 articles, with 50 articles in each class.
 The dataset's original labels are retained and disclosed in every `note` cell.
 
+**Repository URL:** https://github.com/abelmechal/ai201-project3-takemeter-starter-v2026
+
 
 ---
 
@@ -141,6 +143,10 @@ The source dataset supplied the original topic labels. I mapped `World`,
 `Sports`, `Business`, and `Sci/Tech` to `world`, `sports`, `business`, and
 `sci_tech`. This pre-labeled-source workflow was approved by the instructor.
 Every `note` cell in `labels.csv` identifies the source label.
+
+**Source-label audit:** A deterministic 20-row audit found 20/20 stored labels
+matching the original AG News labels. See
+[the audit report](data/ag_news_source_label_audit.md).
 
 **Counts per label:**
 
