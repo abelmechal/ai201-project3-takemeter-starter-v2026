@@ -267,10 +267,12 @@ this project. The original source labels were mapped as follows: `World` to
 
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Overall accuracy | 1.000 | 0.967 | -0.033 |
+| Macro F1 | 1.000 | 0.967 | -0.033 |
+| F1 — `business` | 1.000 | 0.933 | -0.067 |
+| F1 — `sci_tech` | 1.000 | 1.000 | +0.000 |
+| F1 — `sports` | 1.000 | 1.000 | +0.000 |
+| F1 — `world` | 1.000 | 0.933 | -0.067 |
 
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
@@ -283,6 +285,13 @@ balanced AG News articles.
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
+
+The zero-shot BART baseline outperformed the fine-tuned DistilBERT model by
+0.033 on both accuracy and macro F1 on this 30-article held-out split. The
+baseline was perfect on all four labels, while the trained model missed one
+`business` article and one `world` article. This result does not support my
+prediction: with this small balanced AG News sample, the pretrained baseline
+generalized better than the fine-tuned model.
 
 
 

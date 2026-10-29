@@ -1,0 +1,190 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 30,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 30,
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "per_label": {
+      "business": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 8
+      },
+      "sci_tech": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 7
+      },
+      "sports": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 8
+      },
+      "world": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 7
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "Serie A wrap: Milan close on Juve - Inter thump Messina Inter Milan has climbed to fourth after thrashing Messina 5-0 at the San Siro where Adriano scored a first half hat-trick. Sinisa Mihajlovic and Christian Vieri completed the",
+      "gold": "sports",
+      "predicted": "sports"
+    },
+    {
+      "text": "Boeing profit up 78 percent in quarter, upbeat on 2005 CHICAGO, Oct 27 (AFP) - Aviation and defense giant Boeing said Wednesday its third-quarter profit shot up 78 percent from a year ago to 456 million dollars and gave an upbeat forecast for the rest of 2004 and into 2005.",
+      "gold": "business",
+      "predicted": "business"
+    },
+    {
+      "text": "Marc Bulger (2819 yards, 15 TD, 11 INT) is coming off a so-so &lt;b&gt;...&lt;/b&gt; ball compared to last year. His most crucial INT last Sunday came early in the. to all but end any chance of a comeback. Torry Holt (8 receptions, 90 yards).",
+      "gold": "sports",
+      "predicted": "sports"
+    },
+    {
+      "text": "Davis Cup final to break spectator records This weekend #39;s Davis Cup final between Spain and the United States is to set a new record for the number of spectators at an official tennis match.",
+      "gold": "sports",
+      "predicted": "sports"
+    },
+    {
+      "text": "Putin to hold summit with Bush at APEC forum Moscow, Nov 15 (UNI) Russian President Vladimir Putin will hold summit level talks with his US counterpart George W Bush, on the sidelines of the summit of the leaders of the Asia-Pacific Economic Cooperation (APEC) forum, in Santiago, Chile, from",
+      "gold": "world",
+      "predicted": "world"
+    },
+    {
+      "text": "NL Rookie of the Year played at Gonzaga SPOKANE, Wash. -- Pittsburgh Pirates outfielder Jason Bay, who won the National League Rookie of the Year on Monday, played at Gonzaga University.",
+      "gold": "sports",
+      "predicted": "sports"
+    },
+    {
+      "text": "Bush senior: US will work with Blair on Mideast Prime Minister Tony Blair #39;s call for a new Mideast peace push  quot;was heard loud and clear in Washington, quot; former US President George HW Bush said in comments broadcast Sunday.",
+      "gold": "world",
+      "predicted": "world"
+    },
+    {
+      "text": "Judge demands faster action on Iraqi prison abuse investigations A military judge in Germany says the government has to speed up investigations of Iraqi prisoner abuse. Col. James Pohl told prosecutors to make sure three investigative reports on",
+      "gold": "world",
+      "predicted": "world"
+    },
+    {
+      "text": "XML Weather Data \\\\Wired reports: \\\\\"The National Oceanic and Atmospheric Administration this week began providing\\weather data in an open-access XML format, alleviating concerns that\\commercial providers would continue to play a dominant role in how weather\\data gets to the public.\"\\\\\"Previously, the data was technically available to the public, but in a format\\that's not easily deciphered. Taxpayers fund the NOAA and the subsidiary",
+      "gold": "sci_tech",
+      "predicted": "sci_tech"
+    },
+    {
+      "text": "The Kashmir flashpoint The current mindset in Pakistan appears to be flexible on the Kashmir issue. Similarly, flexibility is needed from the Indian side.",
+      "gold": "world",
+      "predicted": "world"
+    },
+    {
+      "text": "Disease raises fears for plants Trees and plants are to be cut down in woodland near Redruth in southwest England after the discovery of a new disease.",
+      "gold": "sci_tech",
+      "predicted": "sci_tech"
+    },
+    {
+      "text": "Novell Ships Enterprise Desktop Linux Distro (NewsFactor) NewsFactor - Novell (Nasdaq: NOVL) offer a new desktop version of Linux for its enterprise customers, the company announced Monday.",
+      "gold": "sci_tech",
+      "predicted": "sci_tech"
+    },
+    {
+      "text": "As With Other Chip Makers, Sales Begin to Stall at Philips, Signaling a possible wider slowdown in the semiconductor industry, Royal Philips Electronics on Friday became the latest company to say that its chip sales had begun to stall, at least temporarily.",
+      "gold": "business",
+      "predicted": "business"
+    },
+    {
+      "text": "Halliburton to Restructure KBR Unit (Reuters) Reuters - Halliburton Co.  said on\\Thursday it would restructure its KBR unit and may shed the\\business if the oil services company's stock performance keeps\\lagging its peers.",
+      "gold": "business",
+      "predicted": "business"
+    },
+    {
+      "text": "Iraqi Rebels Threaten Japanese Hostage (AP) AP - Video posted Tuesday on a militant Islamic Web site showed what it claimed was a Japanese captive kidnapped by Abu Musab al-Zarqawi's group and threatened to behead him within 48 hours unless Japan pulls its troops from Iraq. Japanese Prime Minister Junichiro Koizumi rejected the demand.",
+      "gold": "world",
+      "predicted": "world"
+    },
+    {
+      "text": "McGrady's Flurry Sends Rockets Past Spurs (AP) AP - Tracy McGrady let fly with a running 3-pointer with 1.7 seconds left, capping a one-man rally in the final minute to send the Houston Rockets past the San Antonio Spurs 81-80 Thursday night.",
+      "gold": "sports",
+      "predicted": "sports"
+    },
+    {
+      "text": "PBHG Funds Founders Barred from Business The founders of PBHG mutual funds agreed to pay \\$160 million in restitution and civil fines and to be banned for life from the securities industry to resolve allegations they facilitated improper trading in the funds, regulators said",
+      "gold": "business",
+      "predicted": "business"
+    },
+    {
+      "text": "Nokia Launches Wireless Content Solution Finnish mobile giant Nokia has described its new Preminet solution, which it launched Monday (Oct. 25), as a  quot;major worldwide initiative.",
+      "gold": "sci_tech",
+      "predicted": "sci_tech"
+    },
+    {
+      "text": "Consumers Say Apple Should Share The vast majority of consumers are unaware that an Apple iPod digital music player only plays proprietary iTunes files, while a smaller majority agree that it is within RealNetworks #39; rights to develop a program that will make its music files compatible",
+      "gold": "sci_tech",
+      "predicted": "sci_tech"
+    },
+    {
+      "text": "Notre Dame Will Not Retain Willingham  SOUTH BEND, Ind. (Sports Network) - The University of Notre  Dame announced Tuesday that Tyrone Willingham will not be  retained as the head football coach for 2005. The school has  scheduled a news conference for 4 p.m. EST.",
+      "gold": "sports",
+      "predicted": "sports"
+    },
+    {
+      "text": "FIFA Announces New Dates for Kenya #39;s Qualifying Matches The International Football Federation has announced new dates for Kenya #39;s three qualifying matches for the 2006 World Cup tournament in Germany.",
+      "gold": "sports",
+      "predicted": "sports"
+    },
+    {
+      "text": "Faster chip plugged into midrange UltraSparc Upcoming \"Niagara\" will appear in the 1.6GHz UltraSparc IIIi.",
+      "gold": "sci_tech",
+      "predicted": "sci_tech"
+    },
+    {
+      "text": "09,16,04,counterfeit,CaliforniaWire A Gardena man is among 11 people charged in a federal investigation that led to the seizure of \\$87 million in counterfeit computer software, prosecutors announced Thursday.",
+      "gold": "business",
+      "predicted": "business"
+    },
+    {
+      "text": "Cendant nears coup for US online travel group Cendant, the American travel group that owns car rental shops Avis and Budget, is close to acquiring online travel agency Orbitz.com in a deal said to be worth more than \\$1 billion.",
+      "gold": "business",
+      "predicted": "business"
+    },
+    {
+      "text": "178 NHL Players Now in Europe (AP) AP - Buffalo Sabres center Daniel Briere agreed to a deal Wednesday with SC Bern of the Swiss league, becoming the latest NHL player to head to Europe.",
+      "gold": "sports",
+      "predicted": "sports"
+    },
+    {
+      "text": "Call for action on internet scam Phone companies are not doing enough to warn about net rogue-dialling scams, says the UK telecoms watchdog.",
+      "gold": "sci_tech",
+      "predicted": "sci_tech"
+    },
+    {
+      "text": "HBOS walks away from Abbey HBOS walked away from a possible bid for Abbey National yesterday, shortening the odds sharply on a 8.7 billion recommended offer from Spanish bank Santander Central Hispano being successful.",
+      "gold": "business",
+      "predicted": "business"
+    },
+    {
+      "text": "Charges laid against eight British terror suspects (AFP) AFP - Eight men arrested in an anti-terror swoop in London and other parts of England two weeks ago were charged with conspiracy to murder and other terrorist-related activities.",
+      "gold": "world",
+      "predicted": "world"
+    },
+    {
+      "text": "Private Firms to Buy Intelsat for \\$3 Bln  PARIS (Reuters) - Four private equity firms plan to buy  Bermuda-based Intelsat for about \\$3 billion, the world's  second-largest satellite operator said on Monday.",
+      "gold": "business",
+      "predicted": "business"
+    },
+    {
+      "text": "Japan: Participation, Not Pledges, Key in Iraq Meet (Reuters) Reuters - Japan hopes new pledges to rebuild Iraq\\will emerge as international donors meet in Tokyo from\\Wednesday, but it sees broader participation in stabilizing the\\war-torn country as even more important than fresh funds.",
+      "gold": "world",
+      "predicted": "world"
+    }
+  ]
+}
