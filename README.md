@@ -304,28 +304,31 @@ generalized better than the fine-tuned model.
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | >= 0.70 | 0.967 | 0.667 | 0.733 | Missed |
+| 2. Macro F1 | >= 0.68 | 0.967 | 0.664 | 0.737 | Missed |
+| 3. Per-label F1 | >= 0.60 for every label | Mixed | Mixed | Mixed | Missed |
+| 4. Label balance | No label over 30% | 25% each | 25% each | 25% each | Met |
+| 5. Source-label audit | 100% agreement | 100% | 100% | 100% | Met |
 
 ### Confusion matrix
 
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |  |  |  |
-|---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
-
+| true \ predicted | world | sports | business | sci_tech |
+|---|---:|---:|---:|---:|
+| world | 7 | 0 | 0 | 0 |
+| sports | 0 | 8 | 0 | 0 |
+| business | 1 | 0 | 7 | 0 |
+| sci_tech | 0 | 0 | 0 | 7 |
 **My biggest off-diagonal number, and what it means:**
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the
      other way" is a direction, not just an error rate. -->
 
+The largest off-diagonal value was one true `business` article predicted as
+`world`. This suggests a boundary issue between international/economic news
+rather than a broad failure to recognize the other three categories.
 
 
 ---
@@ -337,12 +340,11 @@ generalized better than the fine-tuned model.
 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
-
+| 1 | Overall accuracy | >= 0.70 | Missed | Seed 7 scored 0.667, below the target. |
+| 2 | Macro F1 | >= 0.68 | Missed | Seed 7 scored 0.664, below the target. |
+| 3 | Per-label F1 | >= 0.60 for every label | Missed | Some labels were below 0.60 in at least one seed. |
+| 4 | Label balance | No label over 30% | Met | Every class has 50 of 200 rows (25%). |
+| 5 | Source-label audit | 100% agreement | Met | All 20 audited rows matched the AG News source labels. |
 **Diagnoses**
 
 <!-- For each miss: the cause, and how you know. The four common causes are:
@@ -354,6 +356,18 @@ generalized better than the fine-tuned model.
      have that can tell a LABELLING problem from a MODEL problem, and this
      section is graded on whether you used it that way. -->
 
+The overall accuracy and macro-F1 targets were missed because criteria must
+hold across all three seeds. Seed 7 fell short on both metrics, demonstrating
+that outcomes remain sensitive to how examples are partitioned into train and
+test splits.
+
+The per-label F1 target was also missed. `sports` was consistently robust, but
+`business`, `world`, and `sci_tech` fluctuated between seeds. With only 200
+total samples (about 34–35 training examples and 7–8 test examples per class),
+one or two errors can heavily skew class-level metrics. The 30/30 staff-label
+agreement shows that the staff taxonomy was applied consistently in that audit;
+the remaining issue is limited data and model variability rather than an
+identified staff-taxonomy labeling inconsistency.
 
 
 ---
@@ -403,22 +417,28 @@ dataset is error-free.
 
 ## The Improvement
 
-**What I changed:**
+**What I changed:** I increased training duration from 3 epochs to 5 epochs
+while holding the model, dataset, labels, learning rate, batch size, and seeds
+constant.
 
-**Which diagnosis pointed at it:**
+**Which diagnosis pointed at it:** The before runs were unstable, so I tested
+whether additional training would make the learned decision boundaries more
+reliable.
 
 ### Run Log — After
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
-
+| 1. Overall accuracy | >= 0.70 | 0.867 | 0.633 | 0.967 | Missed |
+| 2. Macro F1 | >= 0.68 | 0.859 | 0.609 | 0.966 | Missed |
+| 3. Per-label F1 | >= 0.60 for every label | Mixed | Missed | Met | Missed |
+| 4. Label balance | No label over 30% | 25% each | 25% each | 25% each | Met |
+| 5. Source-label audit | 100% agreement | 100% | 100% | 100% | Met |
 **Did it help, and how do I know:**
-
+Training for five epochs did not produce a consistent improvement. It improved
+seed 2024, but reduced both accuracy and macro F1 for seeds 42 and 7. This is
+consistent with overfitting or high variability from the small training split,
+so I reject the change as an across-the-board improvement.
 <!-- If it didn't, say so. Relabelling that didn't help is a genuinely
      interesting result and earns full credit. -->
 
@@ -430,12 +450,21 @@ dataset is error-free.
 
 <!-- For each criterion still missed: what you'd do, and why you stopped. -->
 
+The classifier exhibits high variance across random splits. Extending training
+from 3 to 5 epochs did not stabilize results and harmed two of the three seeds.
+The most reliable future improvement is collecting additional labeled examples,
+especially boundary cases that distinguish `business`, `world`, and `sci_tech`.
 
 
 **The gap between what I meant my labels to capture and what the model
 learned:**
 <!-- Two sentences. Your confusion matrix is the evidence. -->
 
+The seed-42 matrix shows a `business` article misclassified as `world`, and
+other seeds show the same broad boundary can shift. The model can recognize
+obvious sports articles well, but it needs more examples of overlapping
+international, economic, and technology reporting to learn these distinctions
+reliably.
 
 
 <!-- ═════════════════════════════════════════════════════════════════════
