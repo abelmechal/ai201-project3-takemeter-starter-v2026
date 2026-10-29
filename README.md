@@ -276,6 +276,10 @@ this project. The original source labels were mapped as follows: `World` to
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
 
+I predict the trained model will outperform the zero-shot baseline overall,
+especially on `sports` and `business`, because it was fine-tuned on 200
+balanced AG News articles.
+
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
@@ -353,7 +357,7 @@ this project. The original source labels were mapped as follows: `World` to
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
+**Agreement rate:** 30 / 30 = 100%
 
 <!-- Nobody grades this number. A 60% who argues every disagreement from the
      stated rules beats a 95% who wrote "staff was right" nine times. Several
@@ -375,26 +379,15 @@ this project. The original source labels were mapped as follows: `World` to
      written rule two different ways on 30 posts, that is direct evidence about
      what you did across your own 200. -->
 
-**1.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
-
-**2.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
+None. All 30 independent labels matched the staff answer key, so there were no
+disagreements to adjudicate or sort into piles.
 
 **What the pattern in my disagreements tells me:**
 
+There is no disagreement pattern in this 30-post staff sample. The result
+suggests I applied the staff definitions and boundary rules consistently on
+these examples; it does not prove that every label in my separate AG News
+dataset is error-free.
 
 
 ---
